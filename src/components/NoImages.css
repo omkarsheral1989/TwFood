@@ -1,0 +1,36 @@
+.NoImages {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+}
+
+.center-horizontally {
+  position: relative;
+  margin: 0 auto;
+}
+
+.center-vertically {
+  text-align: center;
+  position: relative;
+  top: 28%;
+}
+
+.icon {
+  font-size: 80px;
+  color: gray;
+}
+
+.no-images-text{
+  font-size: 30px;
+  position: relative;
+  top:10px;
+  color: gray;
+}
+
+.add-images{
+  position: relative;
+  top: 10px;
+  font-size: 14px;
+  color: gray;
+}
