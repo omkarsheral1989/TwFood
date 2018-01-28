@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReduxToastr from 'react-redux-toastr'
 
 import './App.css';
+import '../assets/toastr.css';
+
 import Header from './Header';
 import PageTitle from './PageTitle';
 import Images from './Images';

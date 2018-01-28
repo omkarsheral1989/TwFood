@@ -62,7 +62,7 @@ export function uploadImages(files) {
 }
 
 export function refresh() {
-  toastr.info("Refreshing", "in background");
+  toastr.success("Refreshing", "in background");
 
   var page = getPageAsPerCurrentTime();
 
@@ -185,7 +185,7 @@ function dispatchUploadingImages() {
     type: Actions.UPLOADING_IMAGES
   });
 
-  toastr.info('Images will be uploaded', 'in background');
+  toastr.success('Images will be uploaded', 'in background');
 }
 
 function dispatchImagesUploaded() {
