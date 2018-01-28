@@ -11,6 +11,7 @@
 }
 
 .center-vertically {
+  cursor: pointer;
   text-align: center;
   position: relative;
   top: 28%;
