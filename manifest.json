@@ -3,12 +3,12 @@
   "name": "ThoughtWorks Food App",
   "icons": [
     {
-      "src": "/icon_255.png",
+      "src": "./icon_255.png",
       "sizes": "255x255",
       "type": "image/png"
     },
     {
-      "src": "/icon_128.png",
+      "src": "./icon_128.png",
       "sizes": "128x128",
       "type": "image/png"
     }
