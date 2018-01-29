@@ -3,13 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <!--
-    manifest.json provides metadata used when your web app is added to the
-    homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-  -->
+  <meta name="theme-color" content="#2A2928">
+
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/icon_128.png">
   <!--
     Notice the use of %PUBLIC_URL% in the tags above.
     It will be replaced with the URL of the `public` folder during the build.
@@ -24,6 +21,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+  <!--**************SAFARI************ -->
+  <!-- treat it as mobile web app. Allows to add to homescreen with icon -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!--Color of status bar in ios-->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#2A2928">
+  <!--set title, would infer from <title> but if you have different title on ios, you can set it here -->
+  <!--<meta name="apple-mobile-web-app-title" content="PWAGram">-->
+  <!--icons for homescreen-->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon_255.png" sizes="255x255">
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon_128.png" sizes="128x128">
 
 </head>
 <body>

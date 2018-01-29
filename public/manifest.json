@@ -1,15 +1,20 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TwFood",
+  "name": "ThoughtWorks Food App",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icon_255.png",
+      "sizes": "255x255",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_128.png",
+      "sizes": "128x128",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#2A2928",
   "background_color": "#ffffff"
 }
