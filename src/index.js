@@ -6,25 +6,12 @@ import './index.css';
 import App from './components/App';
 import store from './utils/store';
 
-//import registerServiceWorker from './utils/registerServiceWorker';
+import registerServiceWorker from './utils/registerServiceWorker';
 
 ReactDOM.render(
     <Provider store={store}>
       <App/>
     </Provider>
     , document.getElementById('root'));
-
-
-function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./serviceWorker.js')
-        .then(() => {
-          console.log("service worker registered");
-        })
-        .catch((e) => {
-          console.log("service worker registration failed", e);
-        });
-  }
-}
 
 registerServiceWorker();
