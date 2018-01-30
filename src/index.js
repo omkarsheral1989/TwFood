@@ -6,7 +6,7 @@ import './index.css';
 import App from './components/App';
 import store from './utils/store';
 
-//import './utils/serviceWorker';
+//import registerServiceWorker from './utils/registerServiceWorker';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -17,7 +17,7 @@ ReactDOM.render(
 
 function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceWorker.js')
+    navigator.serviceWorker.register('./serviceWorker.js')
         .then(() => {
           console.log("service worker registered");
         })
