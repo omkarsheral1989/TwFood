@@ -5,7 +5,7 @@ import * as Actions from './constants';
 import store from '../utils/store';
 import * as Constants from '../utils/constants';
 import sendGAEvent from '../utils/googleAnalytics';
-
+import {requestNotificationPermission} from '../utils/cloudMessaging';
 
 export function fetchImages() {
   checkWhichPageToDisplay();
@@ -21,6 +21,8 @@ export function fetchImages() {
     });
 
     dispatchImagesFetched(imageUrls);
+
+    requestNotificationPermission();
   });
 }
 

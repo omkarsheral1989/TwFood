@@ -1,4 +1,5 @@
 import firebase from './firebase';
+import * as Constants from './constants';
 
 
 function isNofiticationPermissionGranted() {
@@ -8,6 +9,9 @@ function isNofiticationPermissionGranted() {
 export function requestNotificationPermission() {
   if (isNofiticationPermissionGranted()) {
     console.log("[Notification] permission is already granted");
+
+    registerForTokenRefresh();
+
     return;
   }
   console.log('[Notification] Requesting permission');
@@ -16,17 +20,15 @@ export function requestNotificationPermission() {
   messaging.requestPermission()
       .then(()=> {
         console.log('[Notification] permission granted.');
+
+        registerForTokenRefresh();
+
         return messaging.getToken();
       })
       .then((token)=> {
         if (token) {
-          //sendTokenToServer(token);
-          //updateUIForPushEnabled(token);
           console.log('[Notification] got FCM token:', token);
-
-          //TODO register as group.
-
-
+          registerInGroup(token, Constants.CITY_PUNE);
         } else {
           console.log('[Notification] No Instance ID token available. Request permission to generate one.');
         }
@@ -45,5 +47,44 @@ export function registerForegroundFCMHandler() {
   messaging.onMessage(function (payload) {
     console.log("[Notification] Foreground Message received. ", payload);
     //ignore as app is already in foreground.
+  });
+}
+
+function registerForTokenRefresh() {
+  const messaging = firebase.messaging();
+
+  console.log('[Notification] registering handler for token refresh');
+
+  messaging.onTokenRefresh(()=> {
+    messaging.getToken()
+        .then((refreshedToken) => {
+          console.log('[Notification] Token refreshed.', refreshedToken);
+          registerInGroup(refreshedToken, Constants.CITY_PUNE);
+        })
+        .catch((err) => {
+          console.log('[Notification] Error retrieving refreshed token ', err);
+        });
+  });
+}
+
+function registerInGroup(token, city) {
+  console.log('[Notification] registering the clien in pune group for notifications.');
+  fetch(
+      `https://iid.googleapis.com/iid/v1/${token}/rel/topics/${city}`,
+      {
+        'method': 'POST',
+        'headers': {
+          'Authorization': 'key=AIzaSyCnRs-xF5U84T7VA-I0W35yxaFYwx45oUk',  //server key
+          'Content-Type': 'application/json'
+        }
+      }
+  ).then((response) => {
+    if (response.ok) {
+      console.log('[Notification] registered successfully in group');
+    } else {
+      console.log('[Notification] error registering in group', response);
+    }
+  }).catch((error)=> {
+    console.error('[Notification] error registering in group', error);
   });
 }
