@@ -1,5 +1,6 @@
 import firebase from './firebase';
 import * as Constants from './constants';
+import {toastr} from 'react-redux-toastr'
 
 
 function isNofiticationPermissionGranted() {
@@ -10,9 +11,9 @@ export function requestNotificationPermission() {
   if (isNofiticationPermissionGranted()) {
     console.log("[Notification] permission is already granted");
 
-    registerForTokenRefresh();
+    //registerForTokenRefresh();
 
-    return;
+    //return;
   }
   console.log('[Notification] Requesting permission');
 
@@ -81,6 +82,7 @@ function registerInGroup(token, city) {
   ).then((response) => {
     if (response.ok) {
       console.log('[Notification] registered successfully in group');
+      toastr.success('registered in group');
     } else {
       console.log('[Notification] error registering in group', response);
     }
