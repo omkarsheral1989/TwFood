@@ -7,17 +7,36 @@ function isNofiticationPermissionGranted() {
   return Notification.permission === 'granted';
 }
 
+export function registerFcmServiceWorker() {
+  console.log('[Notification] Registering FCM service worker');
+
+  const messaging = firebase.messaging();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistration()
+        .then((registration)=> {
+          messaging.useServiceWorker(registration);
+          console.log('[Notification] registered FCM service worker');
+        })
+        .then(()=> {
+          registerForegroundFCMHandler();
+        });
+  }
+}
+
 export function requestNotificationPermission() {
+  const messaging = firebase.messaging();
+
   if (isNofiticationPermissionGranted()) {
     console.log("[Notification] permission is already granted");
 
-    //registerForTokenRefresh();
+    registerForTokenRefresh();
 
-    //return;
+    return;
   }
   console.log('[Notification] Requesting permission');
 
-  const messaging = firebase.messaging();
+
   messaging.requestPermission()
       .then(()=> {
         console.log('[Notification] permission granted.');
