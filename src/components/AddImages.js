@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 
 import {uploadImages} from '../actions/index';
 
+import sendGAEvent from '../utils/googleAnalytics';
+
 export default class AddImages extends Component {
 
   onFileSelected(event) {
     uploadImages(event.target.files);
+    sendGAEvent('AddImages', 'Images Added');
   }
 
   addImages() {
     this.inputFile.click();
+    sendGAEvent('AddImages', 'clicked');
   }
 
   render() {

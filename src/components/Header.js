@@ -10,7 +10,7 @@ export default class Header extends Component {
 
   render() {
     return (
-        <Navbar inverse collapseOnSelect>
+        <Navbar style={{borderRadius:'0'}} inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="">TW Foood (Alpha)</a>

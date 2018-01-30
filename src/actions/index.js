@@ -4,6 +4,7 @@ import firebase from '../utils/firebase';
 import * as Actions from './constants';
 import store from '../utils/store';
 import * as Constants from '../utils/constants';
+import sendGAEvent from '../utils/googleAnalytics';
 
 
 export function fetchImages() {
@@ -63,6 +64,7 @@ export function uploadImages(files) {
 
 export function refresh() {
   toastr.success("Refreshing", "in background");
+  sendGAEvent('Refresh', 'clicked');
 
   var page = getPageAsPerCurrentTime();
 
