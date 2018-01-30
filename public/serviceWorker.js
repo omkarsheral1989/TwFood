@@ -1,8 +1,5 @@
 console.log('log from service worker');
 
-//https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css
-//
-
 self.addEventListener('install', function (event) {
   console.log('[Service Worker] Installing Service Worker ...');
 });
@@ -17,3 +14,6 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(fetch(event.request));
 });
 
+self.addEventListener('push', function (event) {
+  console.log('push event', event);
+});
