@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
+import 'firebase/messaging';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCyfMa1zkydaN8zTi7lWOoUI9I7gEDpx6o",

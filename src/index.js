@@ -7,6 +7,7 @@ import App from './components/App';
 import store from './utils/store';
 
 import registerServiceWorker from './utils/registerServiceWorker';
+import {registerForegroundFCMHandler} from './utils/cloudMessaging';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -15,3 +16,4 @@ ReactDOM.render(
     , document.getElementById('root'));
 
 registerServiceWorker();
+registerForegroundFCMHandler();
