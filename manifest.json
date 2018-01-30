@@ -3,7 +3,7 @@
   "name": "ThoughtWorks Food App",
   "icons": [
     {
-      "src": "./icon_255.png",
+      "src": "./icon.png",
       "sizes": "255x255",
       "type": "image/png"
     },
@@ -16,5 +16,6 @@
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#2A2928",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "gcm_sender_id": "103953800507"
 }

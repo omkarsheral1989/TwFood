@@ -10,7 +10,10 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('[Service Worker] Fetching something ....', event);
+  //console.log('[Service Worker] Fetching url ....', event.request.url);
   event.respondWith(fetch(event.request));
 });
 
+self.addEventListener('push', function (event) {
+  console.log('push event', event);
+});
