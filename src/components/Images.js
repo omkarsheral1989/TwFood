@@ -46,10 +46,10 @@ class Images extends Component {
 
     return (
         <Grid>
-          <Col className="col" md={6} key="1">
+          <Col className="col" sm={6}>
             {evenImages}
           </Col>
-          <Col className="col col-right" md={6} key="2">
+          <Col className="col col-right" sm={6}>
             <div className="col-right">
               {oddImages}
             </div>
