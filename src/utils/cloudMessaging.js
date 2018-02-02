@@ -4,7 +4,7 @@ import * as Constants from './constants';
 
 export function registerFcmServiceWorker() {
   console.log('[Notification] Registering FCM service worker');
-  if (!'Notification' in window) {
+  if (!('Notification' in window)) {
     console.log('[Notification] Notification is not supported on this device');
     return;
   }
@@ -26,7 +26,7 @@ export function registerFcmServiceWorker() {
 export function requestNotificationPermission() {
   console.log('[Notification] Requesting notification permission');
 
-  if (!'Notification' in window) {
+  if (!('Notification' in window)) {
     console.log('[Notification] Notification is not supported on this device');
     return;
   }
