@@ -4,12 +4,12 @@ import 'firebase/storage';
 import 'firebase/messaging';
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCyfMa1zkydaN8zTi7lWOoUI9I7gEDpx6o",
-  authDomain: "temp-51f90.firebaseapp.com",
-  databaseURL: "https://temp-51f90.firebaseio.com",
-  projectId: "temp-51f90",
-  storageBucket: "temp-51f90.appspot.com",
-  messagingSenderId: "818180391362"
+  apiKey: "AIzaSyCBGrlmTBOlPMbzGrQH4_Spn83VtNOA9W8",
+  authDomain: "twfood-3bd9e.firebaseapp.com",
+  databaseURL: "https://twfood-3bd9e.firebaseio.com",
+  projectId: "twfood-3bd9e",
+  storageBucket: "twfood-3bd9e.appspot.com",
+  messagingSenderId: "371619992544"
 });
 
 export default firebase;

@@ -1,14 +1,13 @@
 import firebase from './firebase';
 import * as Constants from './constants';
-import {toastr} from 'react-redux-toastr'
 
-
-function isNofiticationPermissionGranted() {
-  return Notification.permission === 'granted';
-}
 
 export function registerFcmServiceWorker() {
   console.log('[Notification] Registering FCM service worker');
+  if (!'Notification' in window) {
+    console.log('[Notification] Notification is not supported on this device');
+    return;
+  }
 
   const messaging = firebase.messaging();
 
@@ -25,17 +24,20 @@ export function registerFcmServiceWorker() {
 }
 
 export function requestNotificationPermission() {
+  console.log('[Notification] Requesting notification permission');
+
+  if (!'Notification' in window) {
+    console.log('[Notification] Notification is not supported on this device');
+    return;
+  }
+
   const messaging = firebase.messaging();
 
   if (isNofiticationPermissionGranted()) {
     console.log("[Notification] permission is already granted");
-
     registerForTokenRefresh();
-
     return;
   }
-  console.log('[Notification] Requesting permission');
-
 
   messaging.requestPermission()
       .then(()=> {
@@ -58,7 +60,7 @@ export function requestNotificationPermission() {
       });
 }
 
-export function registerForegroundFCMHandler() {
+function registerForegroundFCMHandler() {
 // Handle incoming messages. Called when:
 // - a message is received while the app has focus
 // - the user clicks on an app notification created by a sevice worker
@@ -68,6 +70,10 @@ export function registerForegroundFCMHandler() {
     console.log("[Notification] Foreground Message received. ", payload);
     //ignore as app is already in foreground.
   });
+}
+
+function isNofiticationPermissionGranted() {
+  return Notification.permission === 'granted';
 }
 
 function registerForTokenRefresh() {
@@ -101,9 +107,8 @@ function registerInGroup(token, city) {
   ).then((response) => {
     if (response.ok) {
       console.log('[Notification] registered successfully in group');
-      toastr.success('registered in group');
     } else {
-      console.log('[Notification] error registering in group', response);
+      console.log('[Notification] error registering in group, response was not OK', response);
     }
   }).catch((error)=> {
     console.error('[Notification] error registering in group', error);

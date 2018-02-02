@@ -27,7 +27,7 @@ class App extends Component {
           <AddImages ref={(ref)=>{this.addImagesRef=ref}}/>
           <ProgressDialog/>
           <ReduxToastr
-              timeOut={2000}
+              timeOut={3000}
               newestOnTop={true}
               position="bottom-center"
               transitionIn="fadeIn"

@@ -1,4 +1,5 @@
-import {toastr} from 'react-redux-toastr'
+import {toastr} from 'react-redux-toastr';
+import ImageCompressor from 'image-compressor.js';
 
 import firebase from '../utils/firebase';
 import * as Actions from './constants';
@@ -38,20 +39,33 @@ export function uploadImages(files) {
 
   let promises = [];
 
-
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     const fileName = file.name;
 
-    const fileRef = storage.child(fileName);
+    let fileRef = storage.child(fileName);
 
-    let promise = fileRef.put(file).then((snapshot)=> {
-      const imageUrl = snapshot.downloadURL;
-      return database.push().set({
-        name: fileName,
-        imageUrl
-      });
-    });
+    const imageCompressor = new ImageCompressor();
+    const imageCompressorOptions = {quality: .7};
+
+    let promise = Promise.resolve() //to introduce initial delay
+        .then(()=> {
+          return imageCompressor.compress(file, imageCompressorOptions)
+        })
+        .then((compressedFile) => {
+          return fileRef.put(compressedFile)
+        })
+        .then((snapshot)=> {
+          const imageUrl = snapshot.downloadURL;
+          return database.push().set({
+            name: fileName,
+            imageUrl
+          });
+        })
+        .catch((err) => {
+          console.log("error uploading image: " + fileName, err);
+        });
+
 
     promises.push(promise);
   }

@@ -9,12 +9,12 @@ import store from './utils/store';
 import registerServiceWorker from './utils/registerServiceWorker';
 import {registerFcmServiceWorker} from './utils/cloudMessaging';
 
+registerServiceWorker();
+
 ReactDOM.render(
     <Provider store={store}>
       <App/>
     </Provider>
     , document.getElementById('root'));
 
-registerServiceWorker();
-//registerForegroundFCMHandler();
 registerFcmServiceWorker();
