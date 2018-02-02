@@ -100,7 +100,7 @@ function registerInGroup(token, city) {
       {
         'method': 'POST',
         'headers': {
-          'Authorization': 'key=AIzaSyCnRs-xF5U84T7VA-I0W35yxaFYwx45oUk',  //server key
+          'Authorization': 'key=AIzaSyD0fAQwIvKYwpgJ_c18MjiwY-VXj1hileQ',  //server key
           'Content-Type': 'application/json'
         }
       }
